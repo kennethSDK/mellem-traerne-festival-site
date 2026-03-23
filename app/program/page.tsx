@@ -14,9 +14,9 @@ const schedule = [
   },
   {
     time: "12:30",
-    artist: "Højskole??",
+    artist: "Surprise",
     duration: "30 min",
-    description: "Højskole optræden",
+    description: "Surprise optræden",
   },
   {
     time: "13:00",
@@ -88,7 +88,7 @@ export default function ProgramPage() {
                 Program
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                En dag mellem træerne med musik, fællesskab og tid til at være til stede
+                En dag Mellem Træerne med musik, fællesskab og tid til at være til stede
               </p>
             </div>
           </div>
@@ -139,7 +139,7 @@ export default function ProgramPage() {
               <div className="space-y-4">
                 {schedule.map((item, index) => (
                   <Card key={index} className="border-2 hover:border-primary/50 transition-colors">
-                    <CardHeader className="pb-3">
+                    <CardHeader>
                       <div className="flex items-start justify-between gap-4">
                         <CardTitle className="text-xl">{item.artist}</CardTitle>
                         <span className="text-lg font-semibold text-primary flex-shrink-0">
@@ -147,9 +147,6 @@ export default function ProgramPage() {
                         </span>
                       </div>
                     </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground">{item.description}</p>
-                    </CardContent>
                   </Card>
                 ))}
               </div>
@@ -162,7 +159,7 @@ export default function ProgramPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-2xl font-bold text-primary mb-4">
-                Mellem træerne er mere end koncerter
+                Mellem Træerne er mere end koncerter
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 Pauserne er ikke tomme mellemrum. De er fyldt med snak, hygge, fællesskab. Det er her, magien sker.

@@ -65,7 +65,7 @@ export default function BilletterPage() {
                 Billetter
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Sikr dig en plads mellem træerne
+                Sikr dig en plads Mellem Træerne
               </p>
             </div>
           </div>
@@ -163,7 +163,7 @@ export default function BilletterPage() {
                   </CardHeader>
                   <CardContent className="text-muted-foreground">
                     <p>
-                      For at bevare den intime atmosfære mellem træerne, er der et begrænset antal billetter. 
+                      For at bevare den intime atmosfære Mellem Træerne, er der et begrænset antal billetter. 
                       Vi anbefaler, at du køber din billet i god tid.
                     </p>
                   </CardContent>
@@ -180,7 +180,7 @@ export default function BilletterPage() {
               Klar til at opleve magien?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Køb din billet nu og vær med til at skabe en uforglemmelig dag mellem træerne
+              Køb din billet nu og vær med til at skabe en uforglemmelig dag Mellem Træerne
             </p>
             <Button size="lg" className="text-lg" asChild>
               <a href="https://secure.tickster.com/da/xj8xckl576hk23r/products" target="_blank" rel="noopener noreferrer">

@@ -48,7 +48,7 @@ export default function MellemTraernePage() {
             <blockquote className="max-w-3xl mx-auto text-center">
               <p className="text-2xl md:text-3xl font-medium mb-6 italic">
                 "Det er ikke bare en festival. Det er en dag, hvor vi minder hinanden om, 
-                hvad der betyder noget. Musik. Fællesskab. Naturen. Hinanden."
+                hvad der betyder noget. Musik. Fællesskab. Hinanden."
               </p>
             </blockquote>
           </div>

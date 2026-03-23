@@ -10,7 +10,7 @@ export function Footer() {
               Mellem Træerne
             </h3>
             <p className="text-sm text-muted-foreground">
-              En dag mellem træerne i Dronningedalen. Musik, fællesskab og medskabelse.
+              En dag Mellem Træerne i Dronningedalen. Musik, fællesskab og medskabelse.
             </p>
           </div>
           

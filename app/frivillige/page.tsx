@@ -120,118 +120,97 @@ export default function VolunteersPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-                Vil du være medskaber af magien mellem træerne?
+                Vil du være medskaber af magien Mellem Træerne?
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Mellem træerne er en festival der bygges af frivillige, der brænder for musik, fællesskab og det særlige, der opstår, når mennesker mødes i skoven.
+                Mellem Træerne er en festival der bygges af frivillige, der brænder for musik, fællesskab og det særlige, der opstår, når mennesker mødes i skoven.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Form Section */}
+        {/* Roles Section */}
         <section className="py-20 bg-muted/30">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <Card>
+            <div className="max-w-4xl mx-auto">
+              <Card className="text-center border-2 border-primary mb-12">
                 <CardHeader>
-                  <CardTitle className="text-2xl">Tilmeld dig som frivillig</CardTitle>
-                  <CardDescription>
-                    Udfyld formularen nedenfor, så vender vi tilbage til dig med mere information.
+                  <CardTitle className="text-3xl">Tilmeld dig som frivillig</CardTitle>
+                  <CardDescription className="text-lg mt-4">
+                    Klik på knappen nedenfor for at udfylde tilmeldingsformularen
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-8">
-                    {/* Personal Information */}
-                    <div className="space-y-4">
-                      <div>
-                        <Label htmlFor="name">Navn *</Label>
-                        <Input
-                          id="name"
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="Dit fulde navn"
-                          required
-                        />
-                      </div>
-
-                      <div>
-                        <Label htmlFor="email">Email *</Label>
-                        <Input
-                          id="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          placeholder="din@email.dk"
-                          required
-                        />
-                      </div>
-
-                      <div>
-                        <Label htmlFor="phone">Telefonnummer *</Label>
-                        <Input
-                          id="phone"
-                          type="tel"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          placeholder="+45 12 34 56 78"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    {/* Roles Selection */}
-                    <div className="space-y-4">
-                      <Label>Hvad interesserer dig? *</Label>
-                      <p className="text-sm text-muted-foreground">
-                        Vælg de områder, hvor du kunne tænke dig at bidrage
-                      </p>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {roles.map((role) => {
-                          const Icon = role.icon;
-                          const isSelected = formData.roles.includes(role.id);
-                          return (
-                            <button
-                              key={role.id}
-                              type="button"
-                              onClick={() => handleRoleToggle(role.id)}
-                              className={`p-4 rounded-lg border-2 transition-all text-center ${
-                                isSelected
-                                  ? "border-primary bg-primary/10"
-                                  : "border-border hover:border-primary/50"
-                              }`}
-                            >
-                              <Icon className={`w-8 h-8 mx-auto mb-2 ${isSelected ? "text-primary" : "text-muted-foreground"}`} />
-                              <span className={`text-sm font-medium ${isSelected ? "text-primary" : "text-foreground"}`}>
-                                {role.label}
-                              </span>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
-
-                    {/* Motivation */}
-                    <div className="space-y-4">
-                      <Label htmlFor="motivation">Hvad driver dig?</Label>
-                      <p className="text-sm text-muted-foreground">
-                        Fortæl os kort, hvorfor du gerne vil være frivillig ved Mellem Træerne
-                      </p>
-                      <Textarea
-                        id="motivation"
-                        value={formData.motivation}
-                        onChange={(e) => setFormData({ ...formData, motivation: e.target.value })}
-                        placeholder="Jeg vil gerne være frivillig fordi..."
-                        rows={5}
-                      />
-                    </div>
-
-                    <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                      {isSubmitting ? "Sender..." : "Send tilmelding"}
-                    </Button>
-                  </form>
+                <CardContent className="pt-6">
+                  <Button asChild size="lg" className="text-lg px-8">
+                    <a 
+                      href="https://docs.google.com/forms/d/e/1FAIpQLSeFucXcykcpeUqAjwK84BDHMYtcRsCmgwdnPWBMLqRfyr4luQ/viewform?usp=header"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Tilmeld dig nu
+                    </a>
+                  </Button>
                 </CardContent>
               </Card>
+
+              <h2 className="text-3xl font-bold text-primary mb-8 text-center">
+                Frivillige roller
+              </h2>
+              <p className="text-lg text-muted-foreground text-center mb-12">
+                Vi har brug for hjælp til forskellige opgaver før, under og efter festivalen
+              </p>
+              
+              <div className="space-y-6">
+                <Card>
+                  <CardHeader>
+                    <Hammer className="w-8 h-8 text-primary mb-2" />
+                    <CardTitle>Opstilling</CardTitle>
+                    <CardDescription className="mt-2">
+                      Deltag i vores opstillingsteam, der sætter hegn, borde og bænke op, så alt er klar til den store dag.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2 text-muted-foreground">
+                      <li>• Medhjælper opstilling - 4. juni (12.00-18.00)</li>
+                      <li>• Medhjælper opstilling - 5. juni (16.00-21.00)</li>
+                      <li>• Opstilling af scene - 5. juni (08.00-12.00)</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <Coffee className="w-8 h-8 text-primary mb-2" />
+                    <CardTitle>Bar</CardTitle>
+                    <CardDescription className="mt-2">
+                      Vær en del af vores fantastiske barcrew, der serverer lækre drikkevarer og skaber en god stemning for vores gæster.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2 text-muted-foreground">
+                      <li>• Bartender - 6. juni (11.00-18.00)</li>
+                      <li>• Bartender - 6. juni (hele dagen)</li>
+                      <li>• Bartender - 6. juni (17.30-00.30)</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <Sparkles className="w-8 h-8 text-primary mb-2" />
+                    <CardTitle>Nedpakning</CardTitle>
+                    <CardDescription className="mt-2">
+                      Hjælp med at pakke alt ned, der har været stillet op, så vi kan afslutte arrangementet på en god måde.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2 text-muted-foreground">
+                      <li>• Nedpakning af scene - 6. juni (00.00-03.00)</li>
+                      <li>• Nedpakning - 7. juni (12.00-17.00)</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
           </div>
         </section>
@@ -245,12 +224,12 @@ export default function VolunteersPage() {
               </h2>
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  At være frivillig ved Mellem Træerne handler ikke om at "hjælpe til". 
+                  At være frivillig ved Mellem Træerne handler ikke om at "hjælpe til".
                   Det handler om at være medskaber af den oplevelse, som gæsterne møder.
+                  Og så er du en del af et fællesskab. Du møder andre, der brænder for det samme.
                 </p>
                 <p>
-                  Og så er du en del af et fællesskab. Du møder andre, der brænder for det samme. 
-                  Vi bygger noget sammen. Vi deler måltider, historier og øjeblikke mellem træerne.
+                  Vi bygger noget sammen. Vi deler måltider, historier og øjeblikke Mellem Træerne.
                 </p>
               </div>
             </div>

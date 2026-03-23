@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -10,7 +11,7 @@ export function Header() {
 
   const navigation = [
     { name: "Hjem", href: "/" },
-    { name: "Historie", href: "/historie" },
+    { name: "Om Os", href: "/om-os" },
     { name: "Mellem Træerne", href: "/mellem-traerne" },
     { name: "Program", href: "/program" },
     { name: "Billetter", href: "/billetter" },
@@ -22,8 +23,16 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <nav className="container mx-auto flex items-center justify-between p-4 lg:px-8">
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
-            <span className="text-xl font-semibold text-primary">
+          <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
+            <Image
+              src="/MellemTræerne_Logo_01Web_@4x.png"
+              alt="Mellem Træerne Festival Logo"
+              width={50}
+              height={50}
+              className="h-12 w-auto"
+              priority
+            />
+            <span className="text-xl font-semibold text-primary hidden sm:inline">
               Mellem Træerne
             </span>
           </Link>

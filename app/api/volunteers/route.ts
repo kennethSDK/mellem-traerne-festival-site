@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
 
 export const dynamic = 'force-dynamic';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 interface VolunteerFormData {
   name: string;
@@ -31,19 +34,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // In a production environment, you would:
-    // 1. Store the data in a database
-    // 2. Send confirmation email using a service like Resend, SendGrid, or Nodemailer
+    // Send email notification to Kenneth
+    try {
+      await resend.emails.send({
+        from: 'Mellem Træerne <onboarding@resend.dev>', // You'll need to verify your domain to use a custom from address
+        to: 'Kenneth@slotsengensmusik.dk',
+        subject: 'Ny frivillig tilmelding - Mellem Træerne',
+        text: generateNotificationEmail(data),
+      });
+    } catch (emailError) {
+      console.error("Error sending email:", emailError);
+      // Continue even if email fails - we don't want to block the user
+    }
     
-    // For now, we'll simulate the email sending
-    const emailContent = generateConfirmationEmail(data);
-    
-    // Log the submission (in production, this would be saved to database)
+    // Log the submission
     console.log("New volunteer signup:", data);
-    console.log("Email content:", emailContent);
-
-    // Simulate email sending delay
-    await new Promise(resolve => setTimeout(resolve, 500));
 
     return NextResponse.json({
       success: true,
@@ -58,31 +63,19 @@ export async function POST(request: NextRequest) {
   }
 }
 
-function generateConfirmationEmail(data: VolunteerFormData): string {
+function generateNotificationEmail(data: VolunteerFormData): string {
   return `
-Kære ${data.name},
-
-Tak for din interesse i at blive frivillig ved Mellem Træerne!
-
-Vi har modtaget din tilmelding med følgende oplysninger:
+Ny frivillig tilmelding til Mellem Træerne!
 
 Navn: ${data.name}
 Email: ${data.email}
 Telefon: ${data.phone}
 Interesseområder: ${data.roles.join(", ")}
 
-Din motivation:
+Motivation:
 ${data.motivation}
 
-Vi glæder os til at have dig med som medskaber af festivaloplevelsen. Du vil høre nærmere fra os inden festivalen.
-
-Hvis du har spørgsmål, er du velkommen til at kontakte os på info@mellemtraerne.dk.
-
-Varme hilsner,
-Mellem Træerne-teamet
-
 ---
-Slotsengens Musik
-Dronningedalen, Løgumkloster
+Denne tilmelding blev modtaget via hjemmesiden.
   `.trim();
 }

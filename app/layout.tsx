@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Mellem Træerne - Slotsengens Musik",
-  description: "En dag mellem træerne i Dronningedalen. Musik, fællesskab og medskabelse.",
+  description: "En dag Mellem Træerne i Dronningedalen. Musik, fællesskab og medskabelse.",
 };
 
 export default function RootLayout({
