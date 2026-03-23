@@ -3,8 +3,6 @@ import { Resend } from "resend";
 
 export const dynamic = 'force-dynamic';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 interface VolunteerFormData {
   name: string;
   email: string;
@@ -15,6 +13,17 @@ interface VolunteerFormData {
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if RESEND_API_KEY is configured
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error('RESEND_API_KEY is not configured');
+      return NextResponse.json(
+        { error: "Email service unavailable" },
+        { status: 500 }
+      );
+    }
+
+    const resend = new Resend(apiKey);
     const data: VolunteerFormData = await request.json();
 
     // Validate required fields
