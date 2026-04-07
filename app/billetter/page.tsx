@@ -32,13 +32,13 @@ const ticketTypes = [
   {
     name: "Early Bird 3",
     price: "325 kr.",
-    description: "Slutter 1. april",
+    description: "Sluttede 1. april",
     features: [
       "Adgang til hele festivalen",
       "Alle koncerter",
       "Spar 50 kr.",
     ],
-    highlighted: true,
+    expired: true,
   },
   {
     name: "Normal pris",
@@ -48,6 +48,7 @@ const ticketTypes = [
       "Adgang til hele festivalen",
       "Alle koncerter",
     ],
+    highlighted: true,
   },
 ];
 
@@ -62,10 +63,10 @@ export default function BilletterPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-                Billetter
+                Køb Billetter til Musikfestival i Sønderjylland
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Sikr dig en plads Mellem Træerne
+                Sikr dig en plads til Mellem Træerne Festival 2026 i Løgumkloster
               </p>
             </div>
           </div>
@@ -138,7 +139,7 @@ export default function BilletterPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl font-bold text-primary mb-8 text-center">
-                Praktisk information
+                Praktisk Information om Billetkøb
               </h2>
               
               <div className="space-y-6">
@@ -177,10 +178,11 @@ export default function BilletterPage() {
         <section className="py-20">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold text-primary mb-4">
-              Klar til at opleve magien?
+              Oplev Live Musik i Sønderjylland
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Køb din billet nu og vær med til at skabe en uforglemmelig dag Mellem Træerne
+              Køb din billet til sommerfestivalen i Løgumkloster nu og vær med til at skabe 
+              en uforglemmelig dag med koncerter og kulturarrangementer Mellem Træerne
             </p>
             <Button size="lg" className="text-lg" asChild>
               <a href="https://secure.tickster.com/da/xj8xckl576hk23r/products" target="_blank" rel="noopener noreferrer">
