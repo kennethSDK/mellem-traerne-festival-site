@@ -168,7 +168,7 @@ export default function PraktiskPage() {
               <Accordion type="single" collapsible className="w-full space-y-4">
                 <AccordionItem value="item-1" className="border-2 rounded-lg px-6 bg-background">
                   <AccordionTrigger className="text-left font-semibold">
-                    Kan jeg parkere i nærheden af Slotsengen?
+                    Kan jeg parkere i nærheden af Sparekasseskoven?
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground">
                     Der er parkering ved indgangen til Sparekasseskoven.
@@ -240,7 +240,7 @@ export default function PraktiskPage() {
                   <AccordionContent className="text-muted-foreground">
                     Er du fra pressen og vil i kontakt med os?
                     <br />
-                    Kontakt os på mail: <a href="mailto:slotsengensmusik@gmail.com" className="text-primary hover:underline">slotsengensmusik@gmail.com</a>
+                    Kontakt os på mail: <a href="mailto:Kenneth@slotsengensmusik.dk" className="text-primary hover:underline">Kenneth@slotsengensmusik.dk</a>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
