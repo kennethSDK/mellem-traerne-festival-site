@@ -1,9 +1,30 @@
-"use client";
-
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Om Os | Mellem Træerne Festival - Holdet bag Musikfestivalen",
+  description: "Mød holdet bag Mellem Træerne Festival i Løgumkloster, Sønderjylland. Læs om vores mission, værdier og de dedikerede arrangører der skaber musikfestivalen.",
+  keywords: [
+    "om Mellem Træerne team",
+    "festival arrangører Sønderjylland",
+    "Løgumkloster festival holdet",
+    "musikfestival organisatorer",
+    "frivillige arrangører Sønderjylland"
+  ],
+  openGraph: {
+    title: "Om Os | Mellem Træerne Festival",
+    description: "Mød holdet bag Mellem Træerne Festival i Løgumkloster, Sønderjylland. Læs om vores mission og værdier.",
+    type: "website",
+    locale: "da_DK",
+    url: "https://mellemtraerne.dk/om-os",
+  },
+  alternates: {
+    canonical: "https://mellemtraerne.dk/om-os",
+  },
+};
 
 const teamMembers = [
   {
@@ -61,10 +82,10 @@ export default function OmOsPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-                Om Os
+                Om Os - Holdet bag Musikfestivalen i Sønderjylland
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Mød holdet bag Mellem Træerne Festival
+                Mød holdet bag Mellem Træerne Festival i Løgumkloster
               </p>
             </div>
           </div>
