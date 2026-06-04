@@ -46,8 +46,8 @@ export function Footer() {
               <li>Dronningedalen</li>
               <li>Løgumkloster</li>
               <li className="pt-2">
-                <a href="mailto:info@mellemtraerne.dk" className="hover:text-primary transition-colors">
-                  info@mellemtraerne.dk
+                <a href="mailto:info@slotsengensmusik.dk" className="hover:text-primary transition-colors">
+                  info@slotsengensmusik.dk
                 </a>
               </li>
             </ul>
