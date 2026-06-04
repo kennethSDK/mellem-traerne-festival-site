@@ -1,10 +1,32 @@
-"use client";
-
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Shield, Ticket, Heart, MapPin, Utensils, AlertTriangle, Ban, Flame, Dog, Mail } from "lucide-react";
+import { Shield, Ticket, Heart, Ban, Flame, Dog, AlertTriangle } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Praktisk Info | Mellem Træerne Festival 2026 - Musikfestival Løgumkloster",
+  description: "Praktisk information om Mellem Træerne Festival 2026 i Løgumkloster, Sønderjylland. Find svar på spørgsmål om parkering, mad, regler, sikkerhed og meget mere til musikfestivalen.",
+  keywords: [
+    "festival information Sønderjylland",
+    "praktisk info musikfestival",
+    "Løgumkloster festival guide",
+    "festival regler Danmark",
+    "parkering Mellem Træerne",
+    "mad på festival Sønderjylland"
+  ],
+  openGraph: {
+    title: "Praktisk Info | Mellem Træerne Festival 2026",
+    description: "Praktisk information om Mellem Træerne Festival 2026 i Løgumkloster, Sønderjylland. Find svar på alle dine spørgsmål om festivalen.",
+    type: "website",
+    locale: "da_DK",
+    url: "https://mellemtraerne.dk/praktisk",
+  },
+  alternates: {
+    canonical: "https://mellemtraerne.dk/praktisk",
+  },
+};
 
 export default function PraktiskPage() {
   return (
@@ -17,10 +39,10 @@ export default function PraktiskPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-                FAQ
+                Praktisk Information - Musikfestival i Løgumkloster
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Ofte stillede spørgsmål
+                Alt du skal vide om Mellem Træerne Festival i Sønderjylland
               </p>
             </div>
           </div>
@@ -31,7 +53,7 @@ export default function PraktiskPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl font-bold text-primary mb-8 text-center">
-                Sikkerhed
+                Sikkerhed på Festivalen i Sønderjylland
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Card className="border-2">
@@ -91,7 +113,7 @@ export default function PraktiskPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl font-bold text-primary mb-8 text-center">
-                Regler
+                Festivalregler for Mellem Træerne
               </h2>
               <div className="space-y-6">
                 <Card className="border-2 border-destructive">
@@ -163,15 +185,48 @@ export default function PraktiskPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl font-bold text-primary mb-8 text-center">
-                Ofte stillede spørgsmål
+                Ofte Stillede Spørgsmål om Festivalen
               </h2>
               <Accordion type="single" collapsible className="w-full space-y-4">
-                <AccordionItem value="item-1" className="border-2 rounded-lg px-6 bg-background">
+                <AccordionItem value="item-0" className="border-2 rounded-lg px-6 bg-background">
                   <AccordionTrigger className="text-left font-semibold">
-                    Kan jeg parkere i nærheden af Sparekasseskoven?
+                    Hvad er Mellem Træerne Festival?
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground">
+                    Mellem Træerne er en musikfestival i Sønderjylland, der afholdes i Dronningedalen ved Løgumkloster. 
+                    Vi tilbyder en dag fyldt med live musik, koncerter og kulturarrangementer i naturskønne omgivelser. 
+                    Festivalen er kendt for sin unikke atmosfære, hvor publikum oplever musik mellem træerne.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-00" className="border-2 rounded-lg px-6 bg-background">
+                  <AccordionTrigger className="text-left font-semibold">
+                    Hvornår afholdes musikfestivalen i Sønderjylland?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    Mellem Træerne Festival 2026 afholdes lørdag d. 6. juni 2026 fra kl. 12:00 til 23:59 
+                    i Dronningedalen ved Løgumkloster, Sønderjylland.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-000" className="border-2 rounded-lg px-6 bg-background">
+                  <AccordionTrigger className="text-left font-semibold">
+                    Hvor finder jeg festivalen i Løgumkloster?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    Festivalen finder sted i Dronningedalen ved Løgumkloster i Sønderjylland. 
+                    Det er et naturskønt område med skov og træer, der skaber den perfekte ramme for vores sommerfestival. 
                     Der er parkering ved indgangen til Sparekasseskoven.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-1" className="border-2 rounded-lg px-6 bg-background">
+                  <AccordionTrigger className="text-left font-semibold">
+                    Kan jeg parkere i nærheden af festivalpladsen?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    Ja, der er parkering ved indgangen til Sparekasseskoven i Løgumkloster, 
+                    som ligger tæt på festivalområdet i Dronningedalen.
                   </AccordionContent>
                 </AccordionItem>
 
@@ -186,19 +241,22 @@ export default function PraktiskPage() {
 
                 <AccordionItem value="item-3" className="border-2 rounded-lg px-6 bg-background">
                   <AccordionTrigger className="text-left font-semibold">
-                    Må jeg medbringe mad og drikkevarer?
+                    Må jeg medbringe mad og drikkevarer til festivalen?
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground">
-                    Det er ikke tilladt at medbringe egen mad og drikke på pladsen.
+                    Det er ikke tilladt at medbringe egen mad og drikke på festivalpladsen. 
+                    Vi har et stort udvalg af mad og drikkevarer til salg.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-4" className="border-2 rounded-lg px-6 bg-background">
                   <AccordionTrigger className="text-left font-semibold">
-                    Kan jeg få noget at spise?
+                    Hvilken mad kan jeg købe på musikfestivalen?
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground">
-                    Vi har et større udvalg af foodtrucks på pladsen, så der er god mulighed for at få stillet sulten. Alt lige fra burger, hotdogs, gyros til asiatisk og mexicanske madretter vil være at finde på pladsen. Det vil være muligt at benytte disse boder under hele arrangementet.
+                    Vi har et større udvalg af foodtrucks på festivalpladsen i Sønderjylland. 
+                    Du kan få alt fra burger, hotdogs og gyros til asiatisk og mexicanske madretter. 
+                    Alle boder er åbne under hele arrangementet, så du kan nyde god mad mellem koncerterne.
                   </AccordionContent>
                 </AccordionItem>
 
@@ -235,12 +293,44 @@ export default function PraktiskPage() {
 
                 <AccordionItem value="item-8" className="border-2 rounded-lg px-6 bg-background">
                   <AccordionTrigger className="text-left font-semibold">
+                    Er der andre oplevelser i Sønderjylland samme weekend?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    Mellem Træerne er en af de største kulturarrangementer i Sønderjylland i juni måned. 
+                    Området omkring Løgumkloster byder på mange andre oplevelser, herunder historiske seværdigheder, 
+                    naturområder og lokale attraktioner. Festivalen er en perfekt anledning til at udforske regionen.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-9" className="border-2 rounded-lg px-6 bg-background">
+                  <AccordionTrigger className="text-left font-semibold">
+                    Hvad koster billetter til festivalen?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    Billetpriser og information om køb af billetter finder du på vores billetside. 
+                    Vi tilbyder forskellige billettyper til vores sommerfestival i Sønderjylland.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-10" className="border-2 rounded-lg px-6 bg-background">
+                  <AccordionTrigger className="text-left font-semibold">
+                    Er festivalen familievenlig?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground">
+                    Ja, Mellem Træerne er en familievenlig musikfestival i Sønderjylland. 
+                    Vi skaber en tryg og hyggelig atmosfære, hvor hele familien kan nyde live musik 
+                    og kulturarrangementer i naturskønne omgivelser ved Løgumkloster.
+                  </AccordionContent>
+                </AccordionItem>
+
+                <AccordionItem value="item-11" className="border-2 rounded-lg px-6 bg-background">
+                  <AccordionTrigger className="text-left font-semibold">
                     Pressehenvendelser
                   </AccordionTrigger>
                   <AccordionContent className="text-muted-foreground">
-                    Er du fra pressen og vil i kontakt med os?
+                    Er du fra pressen og vil i kontakt med os om musikfestivalen i Sønderjylland?
                     <br />
-                    Kontakt os på mail: <a href="mailto:Kenneth@slotsengensmusik.dk" className="text-primary hover:underline">Kenneth@slotsengensmusik.dk</a>
+                    Kontakt os på mail: <a href="Kenneth@slotsengensmusik.dk" className="text-primary hover:underline">Kenneth@slotsengensmusik.dk</a>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
