@@ -1,10 +1,32 @@
-"use client";
-
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Køb Billetter | Mellem Træerne Festival 2026 - Musikfestival Sønderjylland",
+  description: "Køb billetter til Mellem Træerne Festival 2026 i Løgumkloster. Sikr dig en plads til Sønderjyllands hyggeligste musikfestival d. 6. juni. Billetter fra 375 kr.",
+  keywords: [
+    "køb billetter Mellem Træerne",
+    "festival billetter Sønderjylland",
+    "Løgumkloster festival billetter",
+    "musikfestival billetter Danmark",
+    "koncert billetter Sønderjylland",
+    "festival 2026 billetter"
+  ],
+  openGraph: {
+    title: "Køb Billetter | Mellem Træerne Festival 2026",
+    description: "Køb billetter til Mellem Træerne Festival 2026 i Løgumkloster. Sikr dig en plads til Sønderjyllands hyggeligste musikfestival d. 6. juni.",
+    type: "website",
+    locale: "da_DK",
+    url: "https://mellemtraerne.dk/billetter",
+  },
+  alternates: {
+    canonical: "https://mellemtraerne.dk/billetter",
+  },
+};
 
 const ticketTypes = [
   {
