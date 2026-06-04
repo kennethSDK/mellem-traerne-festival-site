@@ -1,115 +1,34 @@
-"use client";
-
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
-import { Hammer, Coffee, Music2, Users2, Sparkles, Heart, CheckCircle2 } from "lucide-react";
+import { Hammer, Coffee, Sparkles } from "lucide-react";
 
-const roles = [
-  { id: "opsaetning-torsdag", label: "Opsætning Torsdag 4 juni", icon: Hammer },
-  { id: "opsaetning-fredag", label: "Opsætning Fredag 5 juni", icon: Hammer },
-  { id: "bar", label: "Bar 6 juni", icon: Coffee },
-  { id: "oprydning", label: "Oprydning 7 juni", icon: Sparkles },
-];
+export const metadata: Metadata = {
+  title: "Bliv Frivillig | Mellem Træerne Festival 2026 - Hjælp til Musikfestival",
+  description: "Bliv frivillig til Mellem Træerne Festival 2026 i Løgumkloster. Vær med til at skabe Sønderjyllands hyggeligste musikfestival. Tilmeld dig som bartender, opstilling eller nedpakning.",
+  keywords: [
+    "frivillig festival Sønderjylland",
+    "festival frivillig Løgumkloster",
+    "hjælp til musikfestival",
+    "bartender festival",
+    "festival crew Sønderjylland",
+    "frivilligt arbejde festival"
+  ],
+  openGraph: {
+    title: "Bliv Frivillig | Mellem Træerne Festival 2026",
+    description: "Bliv frivillig til Mellem Træerne Festival 2026 i Løgumkloster. Vær med til at skabe Sønderjyllands hyggeligste musikfestival.",
+    type: "website",
+    locale: "da_DK",
+    url: "https://mellemtraerne.dk/frivillige",
+  },
+  alternates: {
+    canonical: "https://mellemtraerne.dk/frivillige",
+  },
+};
 
 export default function VolunteersPage() {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    roles: [] as string[],
-    motivation: "",
-  });
-
-  const handleRoleToggle = (roleId: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      roles: prev.roles.includes(roleId)
-        ? prev.roles.filter((r) => r !== roleId)
-        : [...prev.roles, roleId],
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!formData.name || !formData.email || !formData.phone) {
-      toast({
-        title: "Manglende information",
-        description: "Udfyld venligst alle felter",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (formData.roles.length === 0) {
-      toast({
-        title: "Vælg mindst ét område",
-        description: "Vælg venligst mindst ét interesseområde",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    // Create email body
-    const selectedRoles = formData.roles
-      .map(roleId => roles.find(r => r.id === roleId)?.label)
-      .filter(Boolean)
-      .join(", ");
-
-    const emailBody = `Navn: ${formData.name}%0D%0A` +
-      `Email: ${formData.email}%0D%0A` +
-      `Telefon: ${formData.phone}%0D%0A` +
-      `Interesseområder: ${selectedRoles}%0D%0A%0D%0A` +
-      `Motivation:%0D%0A${formData.motivation || "Ikke angivet"}`;
-
-    const mailtoLink = `mailto:info@slotsengensmusik.dk?subject=Frivillig tilmelding - ${formData.name}&body=${emailBody}`;
-    
-    window.location.href = mailtoLink;
-  };
-
-  if (isSuccess) {
-    return (
-      <div className="flex min-h-screen flex-col">
-        <Header />
-        <main className="flex-1 flex items-center justify-center py-20">
-          <div className="container mx-auto px-4">
-            <Card className="max-w-2xl mx-auto text-center border-2 border-primary">
-              <CardHeader>
-                <div className="mx-auto mb-4 w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-                  <CheckCircle2 className="w-10 h-10 text-primary" />
-                </div>
-                <CardTitle className="text-3xl">Velkommen i familien!</CardTitle>
-                <CardDescription className="text-lg mt-4">
-                  Tak for din tilmelding, {formData.name}. Vi har sendt en bekræftelse til {formData.email}.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-6">
-                  Du vil høre nærmere fra os inden festivalen med praktiske informationer 
-                  og detaljer om dit frivillige arbejde.
-                </p>
-                <Button asChild>
-                  <a href="/">Tilbage til forsiden</a>
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
-
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
