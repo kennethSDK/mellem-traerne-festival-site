@@ -1,8 +1,29 @@
-"use client";
-
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
+
+export const metadata: Metadata = {
+  title: "Historie | Slotsengens Musik til Mellem Træerne - Musikfestival Sønderjylland",
+  description: "Læs historien om Slotsengens Musik og udviklingen til Mellem Træerne Festival i Løgumkloster, Sønderjylland. Fra slotsengen til skoven - en festival der voksede med sit fællesskab.",
+  keywords: [
+    "Slotsengens Musik historie",
+    "Mellem Træerne historie",
+    "festival udvikling Sønderjylland",
+    "Løgumkloster musikhistorie",
+    "lokale kulturarrangementer historie"
+  ],
+  openGraph: {
+    title: "Historie | Slotsengens Musik til Mellem Træerne",
+    description: "Læs historien om Slotsengens Musik og udviklingen til Mellem Træerne Festival i Løgumkloster, Sønderjylland.",
+    type: "website",
+    locale: "da_DK",
+    url: "https://mellemtraerne.dk/historie",
+  },
+  alternates: {
+    canonical: "https://mellemtraerne.dk/historie",
+  },
+};
 
 export default function HistoriePage() {
   return (
