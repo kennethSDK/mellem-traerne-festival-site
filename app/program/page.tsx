@@ -1,9 +1,33 @@
-"use client";
-
+import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Clock, MapPin } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Program 2026 | Mellem Træerne Festival - Koncerter i Sønderjylland",
+  description: "Se det fulde program for Mellem Træerne Festival 2026 i Løgumkloster. Live musik med Rasmus Skøtt, We are the 90's, Von Quar og flere kunstnere. Koncerter fra kl. 12:00-23:59 d. 6. juni.",
+  keywords: [
+    "festival program Sønderjylland",
+    "koncerter Løgumkloster 2026",
+    "live musik program",
+    "Mellem Træerne program",
+    "musikfestival tidsplan",
+    "Rasmus Skøtt koncert",
+    "We are the 90's live",
+    "Von Quar Sønderjylland"
+  ],
+  openGraph: {
+    title: "Program 2026 | Mellem Træerne Festival - Koncerter i Sønderjylland",
+    description: "Se det fulde program for Mellem Træerne Festival 2026 i Løgumkloster. Live musik med Rasmus Skøtt, We are the 90's, Von Quar og flere kunstnere.",
+    type: "website",
+    locale: "da_DK",
+    url: "https://mellemtraerne.dk/program",
+  },
+  alternates: {
+    canonical: "https://mellemtraerne.dk/program",
+  },
+};
 
 const schedule = [
   {
@@ -85,10 +109,10 @@ export default function ProgramPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-                Program
+                Program for Musikfestival i Sønderjylland 2026
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                En dag Mellem Træerne med musik, fællesskab og tid til at være til stede
+                Koncerter og live musik i Dronningedalen ved Løgumkloster • 6. juni 2026
               </p>
             </div>
           </div>
@@ -133,7 +157,7 @@ export default function ProgramPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-3xl font-bold text-primary mb-12 text-center">
-                Dagens program
+                Live Musik Program - Koncerter i Sønderjylland
               </h2>
               
               <div className="space-y-4">
@@ -159,10 +183,11 @@ export default function ProgramPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-2xl font-bold text-primary mb-4">
-                Mellem Træerne er mere end koncerter
+                Oplevelser i Sønderjylland - Mere End Bare Koncerter
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Pauserne er ikke tomme mellemrum. De er fyldt med snak, hygge, fællesskab. Det er her, magien sker.
+                Vores sommerfestival i Løgumkloster byder på kulturarrangementer hele dagen. 
+                Pauserne mellem koncerterne er fyldt med fællesskab, mad og hygge i naturskønne omgivelser.
               </p>
             </div>
           </div>
