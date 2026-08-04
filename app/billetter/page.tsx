@@ -144,7 +144,7 @@ export default function BilletterPage() {
                       {ticket.expired ? (
                         "Udsolgt"
                       ) : (
-                        <a href="https://secure.tickster.com/da/xj8xckl576hk23r/products" target="_blank" rel="noopener noreferrer">
+                        <a href="https://secure.tickster.com/da/3ym95ng6rjttxaf/products" target="_blank" rel="noopener noreferrer">
                           Køb billet
                         </a>
                       )}
