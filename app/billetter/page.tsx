@@ -207,7 +207,7 @@ export default function BilletterPage() {
               en uforglemmelig dag med koncerter og kulturarrangementer Mellem Træerne
             </p>
             <Button size="lg" className="text-lg" asChild>
-              <a href="https://secure.tickster.com/da/xj8xckl576hk23r/products" target="_blank" rel="noopener noreferrer">
+              <a href="https://secure.tickster.com/da/3ym95ng6rjttxaf/products" target="_blank" rel="noopener noreferrer">
                 Køb billetter nu
               </a>
             </Button>
