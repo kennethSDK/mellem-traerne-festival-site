@@ -6,19 +6,20 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Check } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Køb Billetter | Mellem Træerne Festival 2026 - Musikfestival Sønderjylland",
-  description: "Køb billetter til Mellem Træerne Festival 2026 i Løgumkloster. Sikr dig en plads til Sønderjyllands hyggeligste musikfestival d. 6. juni. Billetter fra 375 kr.",
+  title: "Køb Billetter | Mellem Træerne Festival 2027 - Musikfestival Sønderjylland",
+  description: "Køb Early Bird billetter til Mellem Træerne Festival 2027 i Løgumkloster. Kun 249 kr. indtil august! Sikr dig en plads til Sønderjyllands hyggeligste musikfestival d. 29. maj 2027.",
   keywords: [
     "køb billetter Mellem Træerne",
     "festival billetter Sønderjylland",
     "Løgumkloster festival billetter",
     "musikfestival billetter Danmark",
     "koncert billetter Sønderjylland",
-    "festival 2026 billetter"
+    "festival 2027 billetter",
+    "early bird billetter"
   ],
   openGraph: {
-    title: "Køb Billetter | Mellem Træerne Festival 2026",
-    description: "Køb billetter til Mellem Træerne Festival 2026 i Løgumkloster. Sikr dig en plads til Sønderjyllands hyggeligste musikfestival d. 6. juni.",
+    title: "Køb Billetter | Mellem Træerne Festival 2027",
+    description: "Køb Early Bird billetter til Mellem Træerne Festival 2027 i Løgumkloster. Kun 249 kr. indtil august! Sikr dig en plads til Sønderjyllands hyggeligste musikfestival d. 29. maj 2027.",
     type: "website",
     locale: "da_DK",
     url: "https://mellemtraerne.dk/billetter",
@@ -30,47 +31,30 @@ export const metadata: Metadata = {
 
 const ticketTypes = [
   {
-    name: "Early Bird 1",
-    price: "225 kr.",
-    description: "Sluttede 1. december",
+    name: "Early Bird",
+    price: "249 kr.",
+    description: "Kun indtil august 2026",
     features: [
       "Adgang til hele festivalen",
       "Alle koncerter",
       "Billigste pris",
+      "Spar over 100 kr.",
     ],
-    expired: true,
-  },
-  {
-    name: "Early Bird 2",
-    price: "275 kr.",
-    description: "Sluttede 1. februar",
-    features: [
-      "Adgang til hele festivalen",
-      "Alle koncerter",
-      "Spar 100 kr.",
-    ],
-    expired: true,
-  },
-  {
-    name: "Early Bird 3",
-    price: "325 kr.",
-    description: "Sluttede 1. april",
-    features: [
-      "Adgang til hele festivalen",
-      "Alle koncerter",
-      "Spar 50 kr.",
-    ],
-    expired: true,
+    highlighted: true,
+    expired: false,
+    comingSoon: false,
   },
   {
     name: "Normal pris",
-    price: "375 kr.",
-    description: "Fra 1. april",
+    price: "TBA",
+    description: "Fra september 2026",
     features: [
       "Adgang til hele festivalen",
       "Alle koncerter",
     ],
-    highlighted: true,
+    highlighted: false,
+    expired: false,
+    comingSoon: true,
   },
 ];
 
@@ -85,10 +69,10 @@ export default function BilletterPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-                Køb Billetter til Musikfestival i Sønderjylland
+                Early Bird Billetter til 2027
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Sikr dig en plads til Mellem Træerne Festival 2026 i Løgumkloster
+                Sikr dig Early Bird billetter til kun 249 kr. - tilbuddet gælder kun indtil august!
               </p>
             </div>
           </div>
@@ -97,7 +81,7 @@ export default function BilletterPage() {
         {/* Ticket Types */}
         <section className="py-20">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {ticketTypes.map((ticket, index) => (
                 <Card 
                   key={index} 
@@ -106,17 +90,24 @@ export default function BilletterPage() {
                       ? "border-2 border-primary shadow-lg scale-105" 
                       : ticket.expired
                       ? "border-2 opacity-60"
+                      : ticket.comingSoon
+                      ? "border-2 opacity-75"
                       : "border-2"
                   }`}
                 >
                   {ticket.highlighted && (
                     <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
-                      Aktuel pris
+                      Tilgængelig nu!
                     </div>
                   )}
                   {ticket.expired && (
                     <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-muted text-muted-foreground px-4 py-1 rounded-full text-sm font-semibold">
                       Udsolgt
+                    </div>
+                  )}
+                  {ticket.comingSoon && (
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-muted text-muted-foreground px-4 py-1 rounded-full text-sm font-semibold">
+                      Kommer snart
                     </div>
                   )}
                   <CardHeader>
@@ -138,11 +129,13 @@ export default function BilletterPage() {
                     <Button 
                       className="w-full" 
                       variant={ticket.highlighted ? "default" : "outline"}
-                      disabled={ticket.expired}
-                      asChild={!ticket.expired}
+                      disabled={ticket.expired || ticket.comingSoon}
+                      asChild={!ticket.expired && !ticket.comingSoon}
                     >
                       {ticket.expired ? (
                         "Udsolgt"
+                      ) : ticket.comingSoon ? (
+                        "Kommer snart"
                       ) : (
                         <a href="https://secure.tickster.com/da/3ym95ng6rjttxaf/products" target="_blank" rel="noopener noreferrer">
                           Køb billet
@@ -200,11 +193,11 @@ export default function BilletterPage() {
         <section className="py-20">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold text-primary mb-4">
-              Oplev Live Musik i Sønderjylland
+              Glæd jer til Mellem Træerne 2027
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Køb din billet til sommerfestivalen i Løgumkloster nu og vær med til at skabe 
-              en uforglemmelig dag med koncerter og kulturarrangementer Mellem Træerne
+              Tak for en fantastisk festival i 2026! Sikr dig Early Bird billetter til 2027 nu 
+              til kun 249 kr. - tilbuddet gælder kun indtil august. Vi ses 29. maj 2027!
             </p>
             <Button size="lg" className="text-lg" asChild>
               <a href="https://secure.tickster.com/da/3ym95ng6rjttxaf/products" target="_blank" rel="noopener noreferrer">
