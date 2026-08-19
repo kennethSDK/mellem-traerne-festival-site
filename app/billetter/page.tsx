@@ -33,12 +33,12 @@ const ticketTypes = [
   {
     name: "Early Bird",
     price: "249 kr.",
-    description: "Kun indtil august 2026",
+    description: "Kun indtil 31. august 2026",
     features: [
       "Adgang til hele festivalen",
       "Alle koncerter",
       "Billigste pris",
-      "Spar over 100 kr.",
+      "Spar 100 kr.",
     ],
     highlighted: true,
     expired: false,
@@ -46,8 +46,8 @@ const ticketTypes = [
   },
   {
     name: "Normal pris",
-    price: "TBA",
-    description: "Fra september 2026",
+    price: "349 kr.",
+    description: "Fra 1. september 2026",
     features: [
       "Adgang til hele festivalen",
       "Alle koncerter",
@@ -137,7 +137,7 @@ export default function BilletterPage() {
                       ) : ticket.comingSoon ? (
                         "Kommer snart"
                       ) : (
-                        <a href="https://secure.tickster.com/da/3ym95ng6rjttxaf/products" target="_blank" rel="noopener noreferrer">
+                        <a href="https://secure.tickster.com/da/xj8xckl576hk23r/products" target="_blank" rel="noopener noreferrer">
                           Køb billet
                         </a>
                       )}
@@ -200,7 +200,7 @@ export default function BilletterPage() {
               til kun 249 kr. - tilbuddet gælder kun indtil august. Vi ses 29. maj 2027!
             </p>
             <Button size="lg" className="text-lg" asChild>
-              <a href="https://secure.tickster.com/da/3ym95ng6rjttxaf/products" target="_blank" rel="noopener noreferrer">
+              <a href="https://secure.tickster.com/da/xj8xckl576hk23r/products" target="_blank" rel="noopener noreferrer">
                 Køb billetter nu
               </a>
             </Button>
