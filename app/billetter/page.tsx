@@ -7,19 +7,18 @@ import { Check } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Køb Billetter | Mellem Træerne Festival 2027 - Musikfestival Sønderjylland",
-  description: "Køb Early Bird billetter til Mellem Træerne Festival 2027 i Løgumkloster. Kun 249 kr. indtil august! Sikr dig en plads til Sønderjyllands hyggeligste musikfestival d. 29. maj 2027.",
+  description: "Køb billetter til Mellem Træerne Festival 2027 i Løgumkloster. Sikr dig en plads til Sønderjyllands hyggeligste musikfestival d. 29. maj 2027.",
   keywords: [
     "køb billetter Mellem Træerne",
     "festival billetter Sønderjylland",
     "Løgumkloster festival billetter",
     "musikfestival billetter Danmark",
     "koncert billetter Sønderjylland",
-    "festival 2027 billetter",
-    "early bird billetter"
+    "festival 2027 billetter"
   ],
   openGraph: {
     title: "Køb Billetter | Mellem Træerne Festival 2027",
-    description: "Køb Early Bird billetter til Mellem Træerne Festival 2027 i Løgumkloster. Kun 249 kr. indtil august! Sikr dig en plads til Sønderjyllands hyggeligste musikfestival d. 29. maj 2027.",
+    description: "Køb billetter til Mellem Træerne Festival 2027 i Løgumkloster. Sikr dig en plads til Sønderjyllands hyggeligste musikfestival d. 29. maj 2027.",
     type: "website",
     locale: "da_DK",
     url: "https://mellemtraerne.dk/billetter",
@@ -33,28 +32,25 @@ const ticketTypes = [
   {
     name: "Early Bird",
     price: "249 kr.",
-    description: "Kun indtil 31. august 2026",
+    description: "Udsolgt - tilbuddet er udløbet",
     features: [
       "Adgang til hele festivalen",
       "Alle koncerter",
       "Billigste pris",
-      "Spar 100 kr.",
+      "Spar over 100 kr.",
     ],
-    highlighted: true,
-    expired: false,
+    highlighted: false,
+    expired: true,
     comingSoon: false,
   },
   {
     name: "Normal pris",
     price: "349 kr.",
-    description: "Fra 1. september 2026",
-    features: [
-      "Adgang til hele festivalen",
-      "Alle koncerter",
-    ],
-    highlighted: false,
+    description: "Tilgængelig nu",
+    features: [],
+    highlighted: true,
     expired: false,
-    comingSoon: true,
+    comingSoon: false,
   },
 ];
 
@@ -69,10 +65,10 @@ export default function BilletterPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-                Early Bird Billetter til 2027
+                Billetter til 2027
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Sikr dig Early Bird billetter til kun 249 kr. - tilbuddet gælder kun indtil august!
+                Køb dine billetter til Mellem Træerne Festival 2027 - kun 349 kr.
               </p>
             </div>
           </div>
@@ -196,8 +192,8 @@ export default function BilletterPage() {
               Glæd jer til Mellem Træerne 2027
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Tak for en fantastisk festival i 2026! Sikr dig Early Bird billetter til 2027 nu 
-              til kun 249 kr. - tilbuddet gælder kun indtil august. Vi ses 29. maj 2027!
+              Tak for en fantastisk festival i 2026! Køb dine billetter til 2027 nu 
+              til kun 349 kr. Vi ses 29. maj 2027!
             </p>
             <Button size="lg" className="text-lg" asChild>
               <a href="https://secure.tickster.com/da/xj8xckl576hk23r/products" target="_blank" rel="noopener noreferrer">
