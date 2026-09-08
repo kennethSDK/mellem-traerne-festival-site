@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
+import Image from "next/image";
 import { Trees, Users, Heart, Music } from "lucide-react";
 import { useEffect } from "react";
 
@@ -74,10 +75,12 @@ export default function HomePage() {
         <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
-            <img 
+            <Image 
               src="/_6062464.jpg" 
               alt="Mellem Træerne Festival live koncert" 
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
+              priority
             />
             <div className="absolute inset-0 bg-black/50" />
           </div>
