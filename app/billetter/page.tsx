@@ -133,7 +133,7 @@ export default function BilletterPage() {
                       ) : ticket.comingSoon ? (
                         "Kommer snart"
                       ) : (
-                        <a href="https://secure.tickster.com/da/xj8xckl576hk23r/products" target="_blank" rel="noopener noreferrer">
+                        <a href="https://secure.tickster.com/da/3ym95ng6rjttxaf/products" target="_blank" rel="noopener noreferrer">
                           Køb billet
                         </a>
                       )}
@@ -196,7 +196,7 @@ export default function BilletterPage() {
               til kun 349 kr. Vi ses 29. maj 2027!
             </p>
             <Button size="lg" className="text-lg" asChild>
-              <a href="https://secure.tickster.com/da/xj8xckl576hk23r/products" target="_blank" rel="noopener noreferrer">
+              <a href="https://secure.tickster.com/da/3ym95ng6rjttxaf/products" target="_blank" rel="noopener noreferrer">
                 Køb billetter nu
               </a>
             </Button>
