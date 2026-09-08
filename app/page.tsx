@@ -74,17 +74,16 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
           {/* Background Image */}
-          <div className="absolute inset-0 z-0">
-            <Image 
-              src="/_6062464.jpg" 
-              alt="Mellem Træerne Festival live koncert" 
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-black/50" />
-          </div>
-          
+          <<div className="absolute inset-0 z-0">
+  <Image
+    src="/6062464.jpg"
+    alt="Mellem Træerne Festival live koncert"
+    fill
+    className="object-cover"
+    priority
+  />
+  <div className="absolute inset-0 bg-black/50" />
+</div>          
           <div className="container mx-auto px-4 text-center relative z-10">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">
               Tak for 2026!<br />Glæd jer til <span className="text-yellow-400">29. maj 2027</span>
