@@ -14,7 +14,6 @@ export function Header() {
     { name: "Mellem Træerne", href: "/mellem-traerne" },
     { name: "Program", href: "/program" },
     { name: "Billetter", href: "/billetter" },
-    { name: "Frivillige", href: "/frivillige" },
     { name: "Praktisk", href: "/praktisk" },
   ];
 

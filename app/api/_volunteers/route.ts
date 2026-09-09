@@ -1,3 +1,10 @@
+// PARKED: the "Frivillige" page is temporarily hidden (see app/_frivillige).
+// The leading underscore makes this a Next.js private folder, so no route is
+// generated for it. This project builds as a static export (output: 'export'
+// in next.config.mjs), which cannot host a dynamic route handler — keeping it
+// routable breaks the build. To bring the feature back, rename both this folder
+// and app/_frivillige without the underscore, drop the /frivillige entries from
+// public/_redirects, and switch the site off static export.
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
