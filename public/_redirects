@@ -1,0 +1,4 @@
+# "Frivillige" is temporarily hidden — send the old URL to the front page.
+# Uses 302 (temporary) so search engines keep the original URL for when it returns.
+/frivillige   /   302
+/frivillige/* /   302

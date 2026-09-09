@@ -28,11 +28,6 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/frivillige" className="text-muted-foreground hover:text-primary transition-colors">
-                  Frivillige
-                </Link>
-              </li>
-              <li>
                 <Link href="/praktisk" className="text-muted-foreground hover:text-primary transition-colors">
                   Praktisk info
                 </Link>
