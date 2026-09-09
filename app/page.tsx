@@ -141,29 +141,6 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-
-        {/* CTA Section */}
-        <section className="py-20 bg-secondary text-secondary-foreground">
-          <div className="container mx-auto px-4 text-center">
-            <h3 className="text-3xl md:text-4xl font-bold mb-6">
-              Bliv frivillig til Sønderjyllands hyggeligste festival
-            </h3>
-
-            <p className="text-lg mb-8 max-w-2xl mx-auto">
-              Vores musikfestival i Løgumkloster skabes af frivillige, der
-              brænder for live musik, kulturarrangementer og fællesskab i
-              Sønderjylland. Bliv en del af holdet bag festivalen.
-            </p>
-
-            <Button
-              asChild
-              size="lg"
-              className="text-lg bg-foreground text-background hover:bg-foreground/90"
-            >
-              <Link href="/frivillige">Bliv frivillig</Link>
-            </Button>
-          </div>
-        </section>
       </main>
 
       <Footer />
