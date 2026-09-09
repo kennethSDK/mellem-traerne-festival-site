@@ -37,7 +37,7 @@ export default function HomePage() {
       },
       offers: {
         "@type": "Offer",
-        url: "https://mellemtraerne.dk/billetter",
+        url: "https://secure.tickster.com/da/3ym95ng6rjttxaf/products",
         price: "349",
         priceCurrency: "DKK",
         availability: "https://schema.org/InStock",
@@ -103,7 +103,13 @@ export default function HomePage() {
                 size="lg"
                 className="text-lg bg-secondary hover:bg-secondary/90 text-secondary-foreground"
               >
-                <Link href="/billetter">Køb billetter</Link>
+                <a
+                  href="https://secure.tickster.com/da/3ym95ng6rjttxaf/products"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Køb billetter
+                </a>
               </Button>
 
               <Button
@@ -163,4 +169,4 @@ export default function HomePage() {
       <Footer />
     </div>
   );
-} 
+}
