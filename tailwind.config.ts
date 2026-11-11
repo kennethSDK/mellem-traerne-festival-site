@@ -13,6 +13,11 @@ const config: Config = {
   theme: {
   	extend: {
   		colors: {
+  			forest: {
+  				DEFAULT: 'hsl(122 40% 28%)',
+  				deep: 'hsl(130 35% 10%)'
+  			},
+  			cream: 'hsl(45 40% 96%)',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -92,7 +97,8 @@ const config: Config = {
   			'accordion-up': 'accordion-up 0.2s ease-out'
   		},
   		fontFamily: {
-  			sans: ["var(--font-sans)", ...fontFamily.sans]
+  			sans: ["var(--font-sans)", ...fontFamily.sans],
+  			display: ["var(--font-display)", "Georgia", ...fontFamily.serif]
   		}
   	}
   },
