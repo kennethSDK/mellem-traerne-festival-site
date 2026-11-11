@@ -6,6 +6,9 @@ import { cn } from "@/lib/utils";
 type Status = "idle" | "sending" | "success" | "error";
 
 const FORM_NAME = "sponsor";
+const RECIPIENT = "martin@slotsengensmusik.dk";
+const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${RECIPIENT}`;
+const SUCCESS_MESSAGE = "Vi har modtaget jeres henvendelse og vender tilbage hurtigst muligt.";
 
 const fieldClass =
   "mt-2 block w-full rounded-md border border-white/25 bg-white/10 px-4 py-3 text-base text-white placeholder:text-white/50 focus-visible:border-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary";
@@ -18,37 +21,62 @@ export function SponsorForm() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
-    const data = Object.fromEntries(new FormData(form).entries());
+    const data = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
+
+    // Spam-bots udfylder typisk det skjulte felt – lad som om alt gik godt.
+    if (data.website) {
+      setStatus("success");
+      setMessage(SUCCESS_MESSAGE);
+      return;
+    }
 
     setStatus("sending");
     setMessage("");
 
-    try {
-      const res = await fetch("/api/sponsor", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const json = await res.json().catch(() => ({}));
+    const subject = `Ny sponsorhenvendelse: ${data.company}`;
 
-      if (json.fallback === "netlify-forms") {
-        // E-mailtjenesten er ikke sat op – gem henvendelsen i Netlify Forms i stedet.
-        const body = new URLSearchParams();
-        body.set("form-name", FORM_NAME);
-        body.set("subject", `Ny sponsorhenvendelse: ${String(data.company ?? "")}`);
-        for (const [key, value] of Object.entries(data)) body.set(key, String(value));
-        const formRes = await fetch("/__forms.html", {
+    try {
+      let delivered = false;
+
+      // 1) Send e-mail til Martin via FormSubmit.
+      try {
+        const res = await fetch(FORMSUBMIT_URL, {
           method: "POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: body.toString(),
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            Virksomhed: data.company,
+            Kontaktperson: data.name,
+            Email: data.email,
+            Telefon: data.phone || "Ikke oplyst",
+            Besked: data.message || "(ingen besked)",
+            _subject: subject,
+            _replyto: data.email,
+            _template: "table",
+            _captcha: "false",
+            _honey: "",
+          }),
         });
-        if (!formRes.ok) throw new Error("Der opstod en fejl. Prøv venligst igen.");
-      } else if (!res.ok) {
-        throw new Error(json.error || "Der opstod en fejl. Prøv venligst igen.");
+        const json = await res.json().catch(() => ({}));
+        delivered = res.ok && String(json.success) === "true";
+        if (!delivered) console.warn("FormSubmit did not accept the enquiry:", json.message);
+      } catch (err) {
+        console.warn("FormSubmit request failed:", err);
+      }
+
+      // 2) Backup: gem altid henvendelsen i Netlify Forms, så den ikke går tabt.
+      const body = new URLSearchParams({ "form-name": FORM_NAME, subject, ...data });
+      const backup = await fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      }).catch(() => null);
+
+      if (!delivered && !backup?.ok) {
+        throw new Error(`Vi kunne ikke sende jeres henvendelse lige nu. Skriv venligst direkte til ${RECIPIENT}.`);
       }
 
       setStatus("success");
-      setMessage(json.message || "Vi har modtaget jeres henvendelse og vender tilbage hurtigst muligt.");
+      setMessage(SUCCESS_MESSAGE);
       form.reset();
     } catch (err) {
       setStatus("error");
