@@ -43,6 +43,11 @@ const config: Config = {
   				DEFAULT: 'hsl(var(--destructive))',
   				foreground: 'hsl(var(--destructive-foreground))'
   			},
+  			forest: {
+  				DEFAULT: 'hsl(140 34% 22%)',
+  				deep: 'hsl(135 38% 9%)'
+  			},
+  			cream: 'hsl(42 45% 96%)',
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
@@ -92,7 +97,8 @@ const config: Config = {
   			'accordion-up': 'accordion-up 0.2s ease-out'
   		},
   		fontFamily: {
-  			sans: ["var(--font-sans)", ...fontFamily.sans]
+  			sans: ["var(--font-sans)", ...fontFamily.sans],
+  			display: ["var(--font-display)", "Georgia", ...fontFamily.serif]
   		}
   	}
   },
