@@ -13,6 +13,11 @@ const config: Config = {
   theme: {
   	extend: {
   		colors: {
+  			cream: 'hsl(42 45% 96%)',
+  			forest: {
+  				DEFAULT: 'hsl(122 40% 30%)',
+  				deep: 'hsl(130 38% 11%)'
+  			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -92,7 +97,8 @@ const config: Config = {
   			'accordion-up': 'accordion-up 0.2s ease-out'
   		},
   		fontFamily: {
-  			sans: ["var(--font-sans)", ...fontFamily.sans]
+  			sans: ["var(--font-sans)", ...fontFamily.sans],
+  			display: ["var(--font-display)", ...fontFamily.serif]
   		}
   	}
   },

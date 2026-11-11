@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="da">
+  <body>
+    <!-- Skjult kopi af sponsorformularen, så Netlify Forms kan registrere den ved deploy. -->
+    <form name="sponsor" data-netlify="true" netlify-honeypot="website" hidden>
+      <input type="hidden" name="form-name" value="sponsor" />
+      <input type="hidden" name="subject" />
+      <input type="text" name="company" />
+      <input type="text" name="name" />
+      <input type="tel" name="phone" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+      <input type="text" name="website" />
+    </form>
+  </body>
+</html>

@@ -43,16 +43,6 @@ export default function HomePage() {
         availability: "https://schema.org/InStock",
         validFrom: "2026-09-01T00:00:00+02:00",
       },
-      performer: [
-        { "@type": "MusicGroup", name: "Rasmus Skøtt" },
-        { "@type": "MusicGroup", name: "We are the 90's" },
-        { "@type": "MusicGroup", name: "Von Quar" },
-        { "@type": "MusicGroup", name: "Zaymie" },
-        { "@type": "MusicGroup", name: "Zididada" },
-        { "@type": "MusicGroup", name: "Beinir" },
-        { "@type": "MusicGroup", name: "Pauline" },
-        { "@type": "MusicGroup", name: "MD Duo" },
-      ],
     };
 
     const script = document.createElement("script");

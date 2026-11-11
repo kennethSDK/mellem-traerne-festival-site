@@ -28,31 +28,57 @@ export const metadata: Metadata = {
   },
 };
 
-const ticketTypes = [
+type TicketFeature = {
+  text: string;
+};
+
+type TicketType = {
+  name: string;
+  price: string;
+  description: string;
+  features: TicketFeature[];
+  highlighted: boolean;
+  expired: boolean;
+  comingSoon: boolean;
+};
+
+const ticketTypes: TicketType[] = [
   {
     name: "Early Bird",
     price: "249 kr.",
     description: "Udsolgt - tilbuddet er udløbet",
     features: [
-      "Adgang til hele festivalen",
-      "Alle koncerter",
-      "Billigste pris",
-      "Spar over 100 kr.",
+      { text: "Adgang til hele festivalen" },
+      { text: "Alle koncerter" },
+      { text: "Billigste pris" },
+      { text: "Spar over 100 kr." },
     ],
     highlighted: false,
     expired: true,
     comingSoon: false,
   },
   {
-    name: "Normal pris",
+    name: "Pris nu",
     price: "349 kr.",
     description: "Tilgængelig nu",
-    features: [],
+    features: [
+      { text: "Adgang til hele festivalen" },
+      { text: "Alle koncerter" },
+    ],
     highlighted: true,
     expired: false,
     comingSoon: false,
   },
 ];
+
+function FeatureItem({ feature }: { feature: TicketFeature }) {
+  return (
+    <li className="flex items-start gap-2">
+      <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
+      <span className="text-sm text-muted-foreground">{feature.text}</span>
+    </li>
+  );
+}
 
 export default function BilletterPage() {
   return (
@@ -116,10 +142,7 @@ export default function BilletterPage() {
                   <CardContent>
                     <ul className="space-y-3 mb-6">
                       {ticket.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-start gap-2">
-                          <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                          <span className="text-sm text-muted-foreground">{feature}</span>
-                        </li>
+                        <FeatureItem key={featureIndex} feature={feature} />
                       ))}
                     </ul>
                     <Button 
