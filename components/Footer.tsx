@@ -37,6 +37,11 @@ export function Footer() {
                   Praktisk info
                 </Link>
               </li>
+              <li>
+                <Link href="/sponsor" className="text-muted-foreground hover:text-primary transition-colors">
+                  Bliv sponsor
+                </Link>
+              </li>
             </ul>
           </div>
           
