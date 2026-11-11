@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="da">
+  <body>
+    <!-- Skjult kopi af formularer, så Netlify Forms kan registrere dem ved deploy -->
+    <form name="sponsor" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="sponsor" />
+      <input name="bot-field" />
+      <input name="virksomhed" type="text" />
+      <input name="navn" type="text" />
+      <input name="email" type="email" />
+      <input name="telefon" type="tel" />
+      <textarea name="besked"></textarea>
+    </form>
+  </body>
+</html>
