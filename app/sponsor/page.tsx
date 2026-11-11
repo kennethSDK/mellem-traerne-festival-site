@@ -11,7 +11,8 @@ const display = Fraunces({
   axes: ["opsz"],
 });
 
-const PAGE_URL = "https://mellemtraerne.dk/sponsor";
+const SITE_URL = "https://xn--mellemtrerne-edb.dk";
+const PAGE_URL = `${SITE_URL}/sponsor`;
 const DESCRIPTION =
   "Støt Mellem Træerne – en 100 % frivilligdrevet musikfestival i Løgumkloster. Vær med til at skabe musikoplevelser, fællesskab og muligheder for unge i Tønder Kommune. Tag en uforpligtende snak om sponsorat.";
 
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "Mellem Træerne Festival",
     images: [
       {
-        url: "https://mellemtraerne.dk/images/sponsor/og-sponsor.jpg",
+        url: `${SITE_URL}/images/sponsor/og-sponsor.jpg`,
         width: 1200,
         height: 630,
         alt: "Band på scenen ved Mellem Træerne med konfetti og publikum foran scenen",
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Bliv sponsor | Mellem Træerne i Løgumkloster",
     description: DESCRIPTION,
-    images: ["https://mellemtraerne.dk/images/sponsor/og-sponsor.jpg"],
+    images: [`${SITE_URL}/images/sponsor/og-sponsor.jpg`],
   },
 };
 
