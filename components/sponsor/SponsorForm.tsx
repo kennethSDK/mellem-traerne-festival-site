@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 
 type Status = "idle" | "sending" | "success" | "error";
 
+const FORM_NAME = "sponsor";
+
 const fieldClass =
   "mt-2 block w-full rounded-md border border-white/25 bg-white/10 px-4 py-3 text-base text-white placeholder:text-white/50 focus-visible:border-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary";
 const labelClass = "block text-sm font-semibold text-white";
@@ -28,9 +30,25 @@ export function SponsorForm() {
         body: JSON.stringify(data),
       });
       const json = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(json.error || "Der opstod en fejl. Prøv venligst igen.");
+
+      if (json.fallback === "netlify-forms") {
+        // E-mailtjenesten er ikke sat op – gem henvendelsen i Netlify Forms i stedet.
+        const body = new URLSearchParams();
+        body.set("form-name", FORM_NAME);
+        body.set("subject", `Ny sponsorhenvendelse: ${String(data.company ?? "")}`);
+        for (const [key, value] of Object.entries(data)) body.set(key, String(value));
+        const formRes = await fetch("/__forms.html", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: body.toString(),
+        });
+        if (!formRes.ok) throw new Error("Der opstod en fejl. Prøv venligst igen.");
+      } else if (!res.ok) {
+        throw new Error(json.error || "Der opstod en fejl. Prøv venligst igen.");
+      }
+
       setStatus("success");
-      setMessage(json.message || "Tak for jeres henvendelse! Vi vender tilbage hurtigst muligt.");
+      setMessage(json.message || "Vi har modtaget jeres henvendelse og vender tilbage hurtigst muligt.");
       form.reset();
     } catch (err) {
       setStatus("error");
@@ -61,8 +79,8 @@ export function SponsorForm() {
 
   return (
     <form
+      name={FORM_NAME}
       onSubmit={handleSubmit}
-      noValidate={false}
       className="rounded-lg border border-white/20 bg-white/5 p-6 sm:p-10"
     >
       <div className="grid gap-6 sm:grid-cols-2">

@@ -45,11 +45,9 @@ export async function POST(request: NextRequest) {
 
     const apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
-      console.error("RESEND_API_KEY is not configured");
-      return NextResponse.json(
-        { error: "Vi kunne ikke sende jeres henvendelse lige nu. Skriv venligst direkte til martin@slotsengensmusik.dk." },
-        { status: 500 }
-      );
+      // Ingen Resend-nøgle: formularen sender i stedet via Netlify Forms.
+      console.warn("RESEND_API_KEY is not configured – falling back to Netlify Forms");
+      return NextResponse.json({ fallback: "netlify-forms" }, { status: 503 });
     }
 
     const resend = new Resend(apiKey);
