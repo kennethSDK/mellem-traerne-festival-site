@@ -5,6 +5,8 @@ import { useState, type FormEvent } from "react";
 type Status = "idle" | "sending" | "success" | "error";
 
 const FORM_NAME = "sponsor";
+const RECIPIENT = "martin@slotsengensmusik.dk";
+const FORMSUBMIT_URL = `https://formsubmit.co/ajax/${RECIPIENT}`;
 
 const inputClass =
   "mt-2 block w-full rounded-md border border-white/25 bg-white/10 px-4 py-3 text-base text-white placeholder:text-white/50 focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary";
@@ -19,20 +21,59 @@ export function SponsorForm() {
     const form = event.currentTarget;
     setStatus("sending");
 
+    const data = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
+
+    // Spam-bots udfylder typisk det skjulte felt – lad som om alt gik godt.
+    if (data["bot-field"]) {
+      form.reset();
+      setStatus("success");
+      return;
+    }
+
+    let delivered = false;
+
+    // 1) Send e-mail til Martin via FormSubmit.
     try {
-      const body = new URLSearchParams(
-        new FormData(form) as unknown as Record<string, string>,
-      ).toString();
+      const res = await fetch(FORMSUBMIT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          Virksomhed: data.virksomhed,
+          Kontaktperson: data.navn,
+          Email: data.email,
+          Telefon: data.telefon || "Ikke oplyst",
+          Besked: data.besked || "(ingen besked)",
+          _subject: `Ny sponsorhenvendelse: ${data.virksomhed}`,
+          _replyto: data.email,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+      const json = await res.json().catch(() => ({}));
+      delivered = res.ok && String(json.success) === "true";
+      if (!delivered) console.warn("FormSubmit did not accept the enquiry:", json.message);
+    } catch (error) {
+      console.warn("FormSubmit request failed:", error);
+    }
+
+    // 2) Backup: gem altid henvendelsen i Netlify Forms, så den ikke går tabt.
+    let saved = false;
+    try {
+      const body = new URLSearchParams(data).toString();
       const res = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body,
       });
-      if (!res.ok) throw new Error(`Status ${res.status}`);
+      saved = res.ok;
+    } catch (error) {
+      console.warn("Netlify Forms backup failed:", error);
+    }
+
+    if (delivered || saved) {
       form.reset();
       setStatus("success");
-    } catch (error) {
-      console.error("Sponsor form submission failed:", error);
+    } else {
       setStatus("error");
     }
   }
@@ -144,7 +185,7 @@ export function SponsorForm() {
         </button>
         {status === "error" && (
           <p role="alert" className="mt-4 text-base text-secondary">
-            Beskeden kunne ikke sendes. Prøv igen, eller skriv direkte til os.
+            Beskeden kunne ikke sendes. Prøv igen, eller skriv direkte til {RECIPIENT}.
           </p>
         )}
       </div>
