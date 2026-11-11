@@ -58,7 +58,7 @@ const ticketTypes: TicketType[] = [
     comingSoon: false,
   },
   {
-    name: "Normal pris",
+    name: "Pris nu",
     price: "349 kr.",
     description: "Tilgængelig nu",
     features: [
