@@ -30,7 +30,6 @@ export const metadata: Metadata = {
 
 type TicketFeature = {
   text: string;
-  icon: boolean;
 };
 
 type TicketType = {
@@ -38,11 +37,6 @@ type TicketType = {
   price: string;
   description: string;
   features: TicketFeature[];
-  // Price benefits that belong to another ticket, shown under that ticket's name
-  otherTicketBenefits?: {
-    ticketName: string;
-    features: TicketFeature[];
-  };
   highlighted: boolean;
   expired: boolean;
   comingSoon: boolean;
@@ -54,10 +48,10 @@ const ticketTypes: TicketType[] = [
     price: "249 kr.",
     description: "Udsolgt - tilbuddet er udløbet",
     features: [
-      { text: "Adgang til hele festivalen", icon: true },
-      { text: "Alle koncerter", icon: true },
-      { text: "Billigste pris", icon: true },
-      { text: "Spar over 100 kr.", icon: true },
+      { text: "Adgang til hele festivalen" },
+      { text: "Alle koncerter" },
+      { text: "Billigste pris" },
+      { text: "Spar over 100 kr." },
     ],
     highlighted: false,
     expired: true,
@@ -68,16 +62,9 @@ const ticketTypes: TicketType[] = [
     price: "349 kr.",
     description: "Tilgængelig nu",
     features: [
-      { text: "Adgang til hele festivalen", icon: false },
-      { text: "Alle koncerter", icon: true },
+      { text: "Adgang til hele festivalen" },
+      { text: "Alle koncerter" },
     ],
-    otherTicketBenefits: {
-      ticketName: "Early Bird",
-      features: [
-        { text: "Billigste pris", icon: true },
-        { text: "Spar over 100 kr.", icon: true },
-      ],
-    },
     highlighted: true,
     expired: false,
     comingSoon: false,
@@ -87,11 +74,7 @@ const ticketTypes: TicketType[] = [
 function FeatureItem({ feature }: { feature: TicketFeature }) {
   return (
     <li className="flex items-start gap-2">
-      {feature.icon ? (
-        <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
-      ) : (
-        <span className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
-      )}
+      <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" aria-hidden="true" />
       <span className="text-sm text-muted-foreground">{feature.text}</span>
     </li>
   );
@@ -162,18 +145,6 @@ export default function BilletterPage() {
                         <FeatureItem key={featureIndex} feature={feature} />
                       ))}
                     </ul>
-                    {ticket.otherTicketBenefits && (
-                      <div className="mb-6">
-                        <p className="text-sm font-semibold text-foreground mb-3">
-                          {ticket.otherTicketBenefits.ticketName}
-                        </p>
-                        <ul className="space-y-3">
-                          {ticket.otherTicketBenefits.features.map((feature, featureIndex) => (
-                            <FeatureItem key={featureIndex} feature={feature} />
-                          ))}
-                        </ul>
-                      </div>
-                    )}
                     <Button 
                       className="w-full" 
                       variant={ticket.highlighted ? "default" : "outline"}
