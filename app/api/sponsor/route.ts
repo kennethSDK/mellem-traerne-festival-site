@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
     if (!apiKey) {
       console.error("RESEND_API_KEY is not configured");
       return NextResponse.json(
-        { error: "Vi kunne ikke sende jeres henvendelse lige nu. Skriv venligst direkte til Kenneth@slotsengensmusik.dk." },
+        { error: "Vi kunne ikke sende jeres henvendelse lige nu. Skriv venligst direkte til martin@slotsengensmusik.dk." },
         { status: 500 }
       );
     }
@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(apiKey);
     const { error } = await resend.emails.send({
       from: "Mellem Træerne <onboarding@resend.dev>",
-      to: "Kenneth@slotsengensmusik.dk",
+      to: "martin@slotsengensmusik.dk",
       replyTo: data.email,
       subject: `Ny sponsorhenvendelse: ${data.company}`,
       text: `Ny sponsorhenvendelse via mellemtræerne.dk/sponsor
@@ -73,7 +73,7 @@ ${data.message || "(ingen besked)"}
     if (error) {
       console.error("Error sending sponsor email:", error);
       return NextResponse.json(
-        { error: "Vi kunne ikke sende jeres henvendelse lige nu. Prøv igen, eller skriv direkte til Kenneth@slotsengensmusik.dk." },
+        { error: "Vi kunne ikke sende jeres henvendelse lige nu. Prøv igen, eller skriv direkte til martin@slotsengensmusik.dk." },
         { status: 502 }
       );
     }
